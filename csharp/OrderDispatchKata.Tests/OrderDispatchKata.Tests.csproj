@@ -7,7 +7,7 @@
         <ProjectGuid>{772FF3DD-3C34-4482-BEEC-5DA96108F341}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>TellDontAsk.Tests</RootNamespace>
+        <RootNamespace>OrderDispatchKata.Tests</RootNamespace>
         <AssemblyName>OrderDispatchKata.Tests</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>

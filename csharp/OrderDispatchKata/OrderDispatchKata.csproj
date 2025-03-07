@@ -7,7 +7,7 @@
         <ProjectGuid>{637EE911-4147-4A8B-B3B7-72EF4F5A03E6}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>TellDontAsk</RootNamespace>
+        <RootNamespace>OrderDispatchKata</RootNamespace>
         <AssemblyName>OrderDispatchKata</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
