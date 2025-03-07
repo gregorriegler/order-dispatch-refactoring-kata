@@ -1,25 +1,28 @@
-﻿# Tell don't ask
+# Tell Don't Ask
+A kata for refactoring legacy code, focused on violating the Tell, Don't Ask principle and the anemic domain model.
 
-Una kata para su refactorización de código heredado, enfocado en la violación del principio tell don't ask y del modelo de dominio anémico.
+## Instructions
+Here, you will find a simple order flow application. It is capable of creating orders, performing some calculations (totals and taxes), and managing them (approval/rejection and shipping).
 
-## Instrucciones
+The previous development team did not take the time to build a proper domain model. Instead, they preferred a procedural style, leading to this anemic domain model. Fortunately, at least they took the time to write unit tests for the code.
 
-Aquí encontrará una sencilla aplicación de flujo de pedidos. Es capaz de crear órdenes, hacer algunos cálculos (totales e impuestos), y administrarlos (aprobación / rechazo y envío).
+Your new CTO, after experiencing many errors caused by this application, has asked you to refactor the code to make it easier to maintain and more reliable.
 
-El viejo equipo de desarrollo no encontró tiempo para construir un modelo de dominio propio, sino que prefirió usar un estilo procedimental, construyendo este modelo de dominio anémico. Afortunadamente, al menos se tomaron el tiempo para escribir pruebas de unidad para el código.
+## Focus Areas
+As the title of the kata suggests, the focus is, of course, on the Tell, Don't Ask principle. You should aim to remove all setters that shift behavior into domain objects.
 
-Su nuevo CTO, después de muchos errores causados ​​por esta aplicación, le pidió refactorizar este código para hacerlo más fácil de mantener y confiable.
+### Disclaimer
+This kata was suggested by the Software Craftsmanship group in Barcelona and was originally written for Java. I have taken the liberty of translating the instructions and adapting it to my natural language, C#.
 
-## En qué centrarse
+You can find the original kata at: https://github.com/gabrieletondi/tell-dont-ask-kata
 
-Como el título del kata dice, por supuesto, el decir no pide principio. Debería ser capaz de eliminar todos los setters que mueven el comportamiento en los objetos de dominio.
+Since C# does not have a built-in BigDecimal class, I have used the third-party library dmath:
+https://github.com/deveel/deveel-math
 
-### disclaimer
 
-Ésta es una kata sugerida por el grupo Software Craftsmanship de Barcelona y originariamente escrita para Java.
-Me he permitido la osadia de traducir las instrucciones y transformarla a mi lenguaje natural C#
 
-La kata original la encontrarás en https://github.com/gabrieletondi/tell-dont-ask-kata 
 
-al no disponer de la clase BigDecimal he utilizado la libreria de terceros
-dmath   https://github.com/deveel/deveel-math
+
+
+
+
