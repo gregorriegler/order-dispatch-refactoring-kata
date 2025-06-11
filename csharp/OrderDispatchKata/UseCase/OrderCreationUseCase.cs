@@ -10,12 +10,11 @@ namespace OrderDispatchKata.UseCase;
 
 public class OrderCreationUseCase
 {
-    private readonly OrderRepository orderRepository;
+    private readonly OrderRepository orderRepository = OrderRepository.Instance;
     private readonly ProductCatalog productCatalog;
 
-    public OrderCreationUseCase(OrderRepository orderRepository, ProductCatalog productCatalog)
+    public OrderCreationUseCase(ProductCatalog productCatalog)
     {
-        this.orderRepository = orderRepository;
         this.productCatalog = productCatalog;
     }
 
