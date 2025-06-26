@@ -1,15 +1,13 @@
-﻿using Deveel.Math;
-
-namespace OrderDispatchKata.Domain;
+﻿namespace OrderDispatchKata.Domain;
 
 public class OrderItem
 {
-    private Product product;
+    private Product? product;
     private int quantity;
-    private BigDecimal tax;
-    private BigDecimal taxedAmount;
+    private decimal tax;
+    private decimal taxedAmount;
 
-    public Product getProduct()
+    public Product? getProduct()
     {
         return product;
     }
@@ -29,22 +27,22 @@ public class OrderItem
         this.quantity = quantity;
     }
 
-    public BigDecimal getTaxedAmount()
+    public decimal getTaxedAmount()
     {
         return taxedAmount;
     }
 
-    public void setTaxedAmount(BigDecimal taxedAmount)
+    public void setTaxedAmount(decimal taxedAmount)
     {
         this.taxedAmount = taxedAmount;
     }
 
-    public BigDecimal getTax()
+    public decimal getTax()
     {
         return tax;
     }
 
-    public void setTax(BigDecimal tax)
+    public void setTax(decimal tax)
     {
         this.tax = tax;
     }

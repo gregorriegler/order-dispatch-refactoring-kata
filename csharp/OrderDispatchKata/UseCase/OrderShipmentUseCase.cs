@@ -19,6 +19,9 @@ public class OrderShipmentUseCase
     {
         var order = orderRepository.getById(request.getOrderId());
 
+        if (order == null)
+            throw new OrderCannotBeShippedException();
+
         if (order.getStatus().Equals(OrderStatus.CREATED) || order.getStatus().Equals(OrderStatus.REJECTED))
             throw new OrderCannotBeShippedException();
 

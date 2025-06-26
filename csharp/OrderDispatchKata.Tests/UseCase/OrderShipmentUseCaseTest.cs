@@ -44,13 +44,13 @@ public class OrderShipmentUseCaseTest
         initialOrder.setId(1);
         initialOrder.setStatus(OrderStatus.CREATED);
         orderRepository.addOrder(initialOrder);
+        orderRepository.clearSavedOrder(); // Clear the saved order state after adding
 
         var request = new OrderShipmentRequest();
         request.setOrderId(1);
 
         Assert.That(() => useCase.run(request),
             Throws.TypeOf<OrderCannotBeShippedException>());
-
 
         Assert.That(orderRepository.getSavedOrder(), Is.Null);
         Assert.That(shipmentService.getShippedOrder(), Is.Null);

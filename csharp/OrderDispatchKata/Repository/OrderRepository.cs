@@ -9,12 +9,12 @@ public class OrderRepository
 
     private Dictionary<int, Order> orders = new();
     
-    public void save(Order order)
+    public virtual void save(Order order)
     {
         orders[order.getId()] = order;
     }
 
-    public Order getById(int orderId)
+    public Order? getById(int orderId)
     {
         if (!orders.ContainsKey(orderId))
         {

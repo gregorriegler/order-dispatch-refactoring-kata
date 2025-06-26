@@ -4,5 +4,5 @@ namespace OrderDispatchKata.Repository;
 
 public interface ProductCatalog
 {
-    Product getByName(string name);
+    Product? getByName(string name);
 }

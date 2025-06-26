@@ -1,14 +1,12 @@
-﻿using Deveel.Math;
-
-namespace OrderDispatchKata.Domain;
+﻿namespace OrderDispatchKata.Domain;
 
 public class Product
 {
-    private Category category;
-    private string name;
-    private BigDecimal price;
+    private Category? category;
+    private string? name;
+    private decimal price;
 
-    public string getName()
+    public string? getName()
     {
         return name;
     }
@@ -18,17 +16,17 @@ public class Product
         this.name = name;
     }
 
-    public BigDecimal getPrice()
+    public decimal getPrice()
     {
         return price;
     }
 
-    public void setPrice(BigDecimal price)
+    public void setPrice(decimal price)
     {
         this.price = price;
     }
 
-    public Category getCategory()
+    public Category? getCategory()
     {
         return category;
     }

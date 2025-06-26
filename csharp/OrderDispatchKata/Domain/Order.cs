@@ -1,28 +1,27 @@
 ﻿using System.Collections.Generic;
-using Deveel.Math;
 
 namespace OrderDispatchKata.Domain;
 
 public class Order
 {
-    private string currency;
+    private string? currency;
     private int id;
-    private List<OrderItem> items;
+    private List<OrderItem>? items;
     private OrderStatus status;
-    private BigDecimal tax;
-    private BigDecimal total;
+    private decimal tax;
+    private decimal total;
 
-    public BigDecimal getTotal()
+    public decimal getTotal()
     {
         return total;
     }
 
-    public void setTotal(BigDecimal total)
+    public void setTotal(decimal total)
     {
         this.total = total;
     }
 
-    public string getCurrency()
+    public string? getCurrency()
     {
         return currency;
     }
@@ -32,7 +31,7 @@ public class Order
         this.currency = currency;
     }
 
-    public List<OrderItem> getItems()
+    public List<OrderItem>? getItems()
     {
         return items;
     }
@@ -42,12 +41,12 @@ public class Order
         this.items = items;
     }
 
-    public BigDecimal getTax()
+    public decimal getTax()
     {
         return tax;
     }
 
-    public void setTax(BigDecimal tax)
+    public void setTax(decimal tax)
     {
         this.tax = tax;
     }

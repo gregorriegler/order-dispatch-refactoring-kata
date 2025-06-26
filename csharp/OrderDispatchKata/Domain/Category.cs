@@ -1,13 +1,11 @@
-﻿using Deveel.Math;
-
-namespace OrderDispatchKata.Domain;
+﻿namespace OrderDispatchKata.Domain;
 
 public class Category
 {
-    private string name;
-    private BigDecimal taxPercentage;
+    private string? name;
+    private decimal taxPercentage;
 
-    public string getName()
+    public string? getName()
     {
         return name;
     }
@@ -17,12 +15,12 @@ public class Category
         this.name = name;
     }
 
-    public BigDecimal getTaxPercentage()
+    public decimal getTaxPercentage()
     {
         return taxPercentage;
     }
 
-    public void setTaxPercentage(BigDecimal taxPercentage)
+    public void setTaxPercentage(decimal taxPercentage)
     {
         this.taxPercentage = taxPercentage;
     }

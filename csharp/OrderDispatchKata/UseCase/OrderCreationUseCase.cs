@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using Deveel.Math;
+﻿using System;
+using System.Collections.Generic;
 using OrderDispatchKata.Domain;
 using OrderDispatchKata.Repository;
-
-//import static java.math.BigDecimal.valueOf;
-//import static java.math.RoundingMode.HALF_UP;
 
 namespace OrderDispatchKata.UseCase;
 
@@ -18,14 +15,20 @@ public class OrderCreationUseCase
         this.productCatalog = productCatalog;
     }
 
+    public OrderCreationUseCase(OrderRepository orderRepository, ProductCatalog productCatalog)
+    {
+        this.orderRepository = orderRepository;
+        this.productCatalog = productCatalog;
+    }
+
     public void run(SellItemsRequest request)
     {
         var order = new Order();
         order.setStatus(OrderStatus.CREATED);
         order.setItems(new List<OrderItem>());
         order.setCurrency("EUR");
-        order.setTotal(new BigDecimal(0.0));
-        order.setTax(new BigDecimal(0.0));
+        order.setTotal(0.0m);
+        order.setTax(0.0m);
 
         foreach (var itemRequest in request.getRequests())
         {
@@ -36,22 +39,20 @@ public class OrderCreationUseCase
                 throw new UnknownProductException();
             }
 
-            var unitaryTax = product.getPrice().Divide(BigDecimal.ValueOf(100))
-                .Multiply(product.getCategory().getTaxPercentage()).SetScale(2, RoundingMode.HalfUp);
-            var unitaryTaxedAmount = product.getPrice().Add(unitaryTax).SetScale(2, RoundingMode.HalfUp);
-            var taxedAmount = unitaryTaxedAmount.Multiply(BigDecimal.ValueOf(itemRequest.getQuantity()))
-                .SetScale(2, RoundingMode.HalfUp);
-            var taxAmount = unitaryTax.Multiply(BigDecimal.ValueOf(itemRequest.getQuantity()));
+            var unitaryTax = Math.Round((product.getPrice() / 100m) * product.getCategory()!.getTaxPercentage(), 2, MidpointRounding.AwayFromZero);
+            var unitaryTaxedAmount = Math.Round(product.getPrice() + unitaryTax, 2, MidpointRounding.AwayFromZero);
+            var taxedAmount = Math.Round(unitaryTaxedAmount * itemRequest.getQuantity(), 2, MidpointRounding.AwayFromZero);
+            var taxAmount = unitaryTax * itemRequest.getQuantity();
 
             var orderItem = new OrderItem();
             orderItem.setProduct(product);
             orderItem.setQuantity(itemRequest.getQuantity());
             orderItem.setTax(taxAmount);
             orderItem.setTaxedAmount(taxedAmount);
-            order.getItems().Add(orderItem);
+            order.getItems()!.Add(orderItem);
 
-            order.setTotal(order.getTotal().Add(taxedAmount));
-            order.setTax(order.getTax().Add(taxAmount));
+            order.setTotal(order.getTotal() + taxedAmount);
+            order.setTax(order.getTax() + taxAmount);
         }
 
         orderRepository.save(order);
