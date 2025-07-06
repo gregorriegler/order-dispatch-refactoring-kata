@@ -26,4 +26,8 @@
     <ProjectReference Include="..\OrderDispatchKata\OrderDispatchKata.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCase\" />
+  </ItemGroup>
+
 </Project>
